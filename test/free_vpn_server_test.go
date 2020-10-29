@@ -32,14 +32,7 @@ func TestFreeVPNServer(t *testing.T) {
 	instanceID := terraform.Output(t, terraformOptions, "instance_id")
 	vpnUrl := terraform.Output(t, terraformOptions, "access_vpn_url")
 
-	aws.AddTagsToResource(t, awsRegion, instanceID, 
-		map[string]string{"testing": "testing-free-vpn"})
-
 	instanceTags := aws.GetTagsForEc2Instance(t, awsRegion, instanceID)
-
-	testingTag, containsTestingTag := instanceTags["testing"]
-	assert.True(t, containsTestingTag)
-	assert.Equal(t, "testing-free-vpn", testingTag)
 
 	nameTag, containsNameTag := instanceTags["Name"]
 	assert.True(t, containsNameTag)
