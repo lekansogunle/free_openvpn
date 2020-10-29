@@ -34,7 +34,7 @@ resource "aws_instance" "openvpn" {
               EOF
 
   tags = {
-    Name = "openvpn"
+    Name = var.server_name
   }
 }
 
