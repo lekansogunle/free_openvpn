@@ -45,5 +45,5 @@ func TestFreeVPNServer(t *testing.T) {
 	assert.True(t, containsNameTag)
 	assert.Equal(t, expectedName, nameTag)
 
-	assert.Equal(t, ":943/admin", string(vpnUrl[len(vpnUrl)-10:]))
+	assert.Regexp(t, ":943/admin", vpnUrl)
 }
